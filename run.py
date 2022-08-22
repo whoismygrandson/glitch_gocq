@@ -14,7 +14,8 @@ HEADERS = {
 
 
 def get_down_url():
-    rsp = requests.get("https://api.github.com/repos/Mrs4s/go-cqhttp/releases/latest")
+    rsp = requests.get(
+        "https://api.github.com/repos/Mrs4s/go-cqhttp/releases/latest")
     rsp = rsp.json()
     print(f"Latest go-cqhttp version:{rsp['tag_name']}")
     for i in rsp["assets"]:
@@ -23,14 +24,14 @@ def get_down_url():
 
 
 def check_runnable():
-    if not Path("./.data", "go-cqhttp").exists():
-        down_url = get_down_url()
+    if not Path("./.data", "gocqzbp").exists():
+        down_url = 'https://pan.crnmsl.ml/api/v3/file/source/11061/gocqzbp1.zip?sign=0pNScjsHWUQ_mohAta7Wy4L9rzScQJDN3lpayiEPRAc%3D%3A0'
         content = requests.get(down_url, headers=HEADERS)
-        with open(Path(".data", "download.tar.gz"), "wb")as file:
+        with open(Path(".data", "gocqzbp1.zip"), "wb")as file:
             file.write(content.content)
-        os.system("cd ./.data/ && tar -zxvf ./download.tar.gz")
+        os.system("cd ./.data/ && unzip ./gocqzbp1.zip")
 
-    os.chmod("./.data/go-cqhttp", 755)
+    os.chmod("./.data/gocqzbp", 755)
 
 
 def run_gocq():
@@ -64,9 +65,10 @@ def mv_config(env, file_name):
 if __name__ == '__main__':
     if not Path(".data").exists():
         os.mkdir(".data")
-    check_runnable()
-    mv_config("CONF", "config.yml")
-    mv_config("DEVICE", "devices.json")
+    # check_runnable()
+    #mv_config("SSTOKEN", "session.token")
+   # mv_config("CONF", "config.yml")
+    #mv_config("DEVICE", "devices.json")
     # os.system("refresh")  # 刷新glitch
     # os.system("git reset HEAD .")
     gocq_thread = threading.Thread(target=run_gocq)
