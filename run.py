@@ -25,18 +25,18 @@ def get_down_url():
 
 def check_runnable():
     if not Path("./.data", "gocqzbp").exists():
-        down_url = 'https://pan.crnmsl.ml/api/v3/file/source/11061/gocqzbp1.zip?sign=0pNScjsHWUQ_mohAta7Wy4L9rzScQJDN3lpayiEPRAc%3D%3A0'
+        down_url = 'https://pan.crnmsl.ml/api/v3/file/source/11063/gocqzbp_linux_amd64.zip?sign=57baYfXr8EF43otf3UcQoGYZPnZHoU4XJve98fkGbFs%3D%3A0'
         content = requests.get(down_url, headers=HEADERS)
-        with open(Path(".data", "gocqzbp1.zip"), "wb")as file:
+        with open(Path(".data", "gocqzbp_linux_amd64.zip"), "wb")as file:
             file.write(content.content)
-        os.system("cd ./.data/ && unzip ./gocqzbp1.zip")
+        os.system("cd ./.data/ && unzip ./gocqzbp_linux_amd64.zip")
 
     os.chmod("./.data/gocqzbp", 755)
 
 
 def run_gocq():
     while True:
-        process = subprocess.Popen("cd ./.data && ./go-cqhttp faststart", shell=True, stdin=sys.stdin,
+        process = subprocess.Popen("cd ./.data && ./gocqzbp faststart", shell=True, stdin=sys.stdin,
                                    stdout=sys.stdout,
                                    stderr=sys.stderr)
         process.wait()
@@ -65,7 +65,7 @@ def mv_config(env, file_name):
 if __name__ == '__main__':
     if not Path(".data").exists():
         os.mkdir(".data")
-    # check_runnable()
+    check_runnable()
     #mv_config("SSTOKEN", "session.token")
    # mv_config("CONF", "config.yml")
     #mv_config("DEVICE", "devices.json")
