@@ -25,7 +25,7 @@ def get_down_url():
 
 def check_runnable():
     if not Path("./.data", "gocqzbp").exists():
-        down_url = 'https://pan.crnmsl.ml/api/v3/file/source/11064/gocqzbp_linux_amd64_2.zip?sign=64aQyDPK-UkSqbE-n5GAa8r_38x466RFCJuPdP5W8qU%3D%3A0'
+        down_url = 'https://pan.crnmsl.ml/api/v3/file/source/11065/gocqzbp_linux_amd64.zip?sign=QiGbXBEl0fxW7VNqQRU9jWkj6WaO4fl5zEDAukQvbSk%3D%3A0'
         content = requests.get(down_url, headers=HEADERS)
         with open(Path(".data", "gocqzbp_linux_amd64_2.zip"), "wb")as file:
             file.write(content.content)
